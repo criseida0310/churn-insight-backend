@@ -22,3 +22,7 @@ INSERT INTO permissions (name) VALUES
 INSERT INTO user_client_access (user_id, client_id, access_level) VALUES
 (1, 1, 'FULL'),
 (2, 1, 'READ');
+-- User → Roles
+INSERT INTO user_roles (user_id, role_id) VALUES
+(1, 1), -- Admin User → ADMIN
+(2, 2); -- Analyst User → ANALYST
