@@ -41,3 +41,29 @@ CREATE TABLE user_client_access (
   access_level VARCHAR(20),
   PRIMARY KEY (user_id, client_id)
 );
+-- Relaciones user_roles
+ALTER TABLE user_roles
+ADD CONSTRAINT fk_user_roles_user
+FOREIGN KEY (user_id) REFERENCES users(id);
+
+ALTER TABLE user_roles
+ADD CONSTRAINT fk_user_roles_role
+FOREIGN KEY (role_id) REFERENCES roles(id);
+
+-- Relaciones role_permissions
+ALTER TABLE role_permissions
+ADD CONSTRAINT fk_role_permissions_role
+FOREIGN KEY (role_id) REFERENCES roles(id);
+
+ALTER TABLE role_permissions
+ADD CONSTRAINT fk_role_permissions_permission
+FOREIGN KEY (permission_id) REFERENCES permissions(id);
+
+-- Relaciones user_client_access
+ALTER TABLE user_client_access
+ADD CONSTRAINT fk_user_client_access_user
+FOREIGN KEY (user_id) REFERENCES users(id);
+
+ALTER TABLE user_client_access
+ADD CONSTRAINT fk_user_client_access_client
+FOREIGN KEY (client_id) REFERENCES clients(id);
