@@ -23,3 +23,16 @@ public class ClientService {
         return clientRepository.findAll();
     }
 }
+public Client createFromDto(ClientCreateRequestDTO dto) {
+    Client client = new Client();
+    client.setClientName(dto.getClientName());
+    client.setEmail(dto.getEmail());
+    client.setActive(dto.getActive());
+    client.setSubscriptionDate(dto.getSubscriptionDate());
+    client.setGender(dto.getGender());
+    client.setPhoneRegistered(dto.getPhoneRegistered());
+    client.setNearCity(dto.getNearCity());
+    client.setAge(dto.getAge());
+
+    return clientRepository.save(client);
+}
