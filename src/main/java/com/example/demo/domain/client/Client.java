@@ -1,7 +1,7 @@
-package com.example.demo.domain.user;
+package com.example.demo.domain.client;
 
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "clients")
@@ -12,89 +12,30 @@ public class Client {
     private Long id;
 
     @Column(nullable = false)
-    private String clientName;
+    private String plan;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column(name = "fecha_alta")
+    private LocalDate fechaAlta;
 
-    private Boolean active;
-
-    @Temporal(TemporalType.DATE)
-    private Date subscriptionDate;
-
-    private String gender;
-    private String phoneRegistered;
-    private String nearCity;
-    private String age;
-
-    public Client() {
-    }
+    public Client() {}
 
     public Long getId() {
         return id;
     }
 
-    public String getClientName() {
-        return clientName;
+    public String getPlan() {
+        return plan;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setPlan(String plan) {
+        this.plan = plan;
     }
 
-    public String getEmail() {
-        return email;
+    public LocalDate getFechaAlta() {
+        return fechaAlta;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public Date getSubscriptionDate() {
-        return subscriptionDate;
-    }
-
-    public void setSubscriptionDate(Date subscriptionDate) {
-        this.subscriptionDate = subscriptionDate;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getPhoneRegistered() {
-        return phoneRegistered;
-    }
-
-    public void setPhoneRegistered(String phoneRegistered) {
-        this.phoneRegistered = phoneRegistered;
-    }
-
-    public String getNearCity() {
-        return nearCity;
-    }
-
-    public void setNearCity(String nearCity) {
-        this.nearCity = nearCity;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
+    public void setFechaAlta(LocalDate fechaAlta) {
+        this.fechaAlta = fechaAlta;
     }
 }
