@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.client.Client;
 import com.example.demo.domain.client.ClientCreateRequestDTO;
-import com.example.demo.domain.user.Client;
 import com.example.demo.service.ClientService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,16 +18,14 @@ public class ClientController {
         this.clientService = clientService;
     }
 
-    // POST - crear cliente usando DTO
+    // POST /clients
     @PostMapping
     public ResponseEntity<Client> createClient(
             @RequestBody ClientCreateRequestDTO dto) {
-
-        Client client = clientService.createFromDto(dto);
-        return ResponseEntity.ok(client);
+        return ResponseEntity.ok(clientService.createFromDto(dto));
     }
 
-    // GET - listar clientes
+    // GET /clients
     @GetMapping
     public ResponseEntity<List<Client>> getAllClients() {
         return ResponseEntity.ok(clientService.getAllClients());
