@@ -16,11 +16,24 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    // Crear cliente desde DTO
+    // Crear cliente desde DTO (sin churn)
     public Client createFromDto(ClientCreateRequestDTO dto) {
         Client client = new Client();
-        client.setPlan(dto.getPlan());
-        client.setFechaAlta(dto.getFechaAlta());
+
+        client.setClientName(dto.getClientName());
+        client.setGender(dto.getGender());
+        client.setNearLocation(dto.getNearLocation());
+        client.setPartnerEmployee(dto.getPartnerEmployee());
+        client.setPromoFriends(dto.getPromoFriends());
+        client.setClientPhone(dto.getClientPhone());
+        client.setAge(dto.getAge());
+        client.setContractPeriod(dto.getContractPeriod());
+        client.setMonthToEndContract(dto.getMonthToEndContract());
+        client.setLifetimeMonths(dto.getLifetimeMonths());
+        client.setAvgClassFrequencyTotal(dto.getAvgClassFrequencyTotal());
+        client.setAvgClassFrequencyCurrentMonth(dto.getAvgClassFrequencyCurrentMonth());
+
+        // churn NO se setea aquí (lo calcula el modelo)
         return clientRepository.save(client);
     }
 
